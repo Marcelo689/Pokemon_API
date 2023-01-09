@@ -11,8 +11,24 @@
         <TextBox Name="pokemonName" Text="{Binding PokemonName}"  HorizontalAlignment="Left" Margin="107,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button Click="Button_Click" Content="Pesquisar" HorizontalAlignment="Left" Margin="244,25,0,0" VerticalAlignment="Top" Width="105"/>
         <TextBlock Name="HeldItemsPokemon" HorizontalAlignment="Left" Margin="0,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="727" Height="97"/>
-        <Label Content="Habilidades" HorizontalAlignment="Left" Margin="0,254,0,0" VerticalAlignment="Top" RenderTransformOrigin="-6.423,-0.14" Width="82"/>
-        <DataGrid SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" SelectedItem="{Binding Path=HabilidadeSelecionada, Mode=TwoWay}" CanUserAddRows="False" ItemsSource="{Binding Habilidades , UpdateSourceTrigger=PropertyChanged}"  Margin="0,280,273,372"/>
+        <Label Content="Habilidades" HorizontalAlignment="Left" Margin="41,270,0,0" VerticalAlignment="Top" RenderTransformOrigin="-6.423,-0.14" Width="82"/>
+        <DataGrid SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" SelectedItem="{Binding Path=HabilidadeSelecionada, Mode=TwoWay}" CanUserAddRows="False" ItemsSource="{Binding Habilidades , UpdateSourceTrigger=PropertyChanged}"  Margin="41,301,232,351"/>
         <TextBlock TextWrapping="Wrap" Name="descricaoHabilidadeTextBlock" Margin="0,417,273,193" />
+        <ListView ItemsSource="{Binding HeldItens}" Margin="33,132,704,535">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Held Itens" HorizontalAlignment="Left" Margin="41,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="-10.845,0.414"/>
+        <Label Content="Tipos" HorizontalAlignment="Left" Margin="334,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="-10.37,-0.307" Width="308"/>
+        <ListView ItemsSource="{Binding TiposDoPokemon}" Margin="334,132,403,535">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

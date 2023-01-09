@@ -17,6 +17,9 @@ namespace ApiPokemon
         public Ability1 HabilidadeSelecionada { get; set; } = new Ability1();
         public string DescricaoHabilidade { get; set; } = "";
         public ObservableCollection<Ability1> Habilidades { get; set; } = new ObservableCollection<Ability1>();
+        public ObservableCollection<string> HeldItens { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<string> TiposDoPokemon { get; set; } = new ObservableCollection<string>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -56,9 +59,19 @@ namespace ApiPokemon
             {
                 var nomeHabilidade = habilit.ability;
                 Habilidades.Add(nomeHabilidade);
-                var dadosHabilidade = RetornaDescricaoHabilidade(nomeHabilidade.name);
             }
             DataContext = this;
+        }
+
+        private void PreenchePokemonTypes(Pokemon pokemonDados)
+        {
+            var pokemonTypes = pokemonDados.types;
+            TiposDoPokemon.Clear();
+            foreach (var habilit in pokemonTypes)
+            {
+                var tipodoPokemon = habilit.type.name;
+                TiposDoPokemon.Add(tipodoPokemon);
+            }
         }
 
         private void PreencheHeldItems(Pokemon pokemonDados)
@@ -66,9 +79,10 @@ namespace ApiPokemon
 
             //HeldItemsPokemon.Text = 
             var heldItems =  pokemonDados.held_items;
+            HeldItens.Clear();
             foreach (var item in heldItems)
             {
-
+                HeldItens.Add( item.item.name);
             }
         }
         private HabilidadePokemon RetornaDescricaoHabilidade(string pesquisa)
@@ -87,7 +101,11 @@ namespace ApiPokemon
                 var json = webCliente.DownloadString(urlPokemonApi + pesquisa);
                 var POKEMONDADOS = JsonConvert.DeserializeObject<Pokemon>(json);
                 if(POKEMONDADOS != null)
+                {
                     PreencheHabilidades(POKEMONDADOS);
+                    PreencheHeldItems(POKEMONDADOS);
+                    PreenchePokemonTypes(POKEMONDADOS);
+                }
                 return json;
             }
         }

@@ -1,0 +1,18 @@
+﻿<Window x:Class="ApiPokemon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApiPokemon"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1000">
+    <Grid>
+        <Label Content="Pokemon" HorizontalAlignment="Left" Margin="33,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.812,-1.759"/>
+        <TextBox Name="pokemonName" Text="{Binding PokemonName}"  HorizontalAlignment="Left" Margin="107,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Click="Button_Click" Content="Pesquisar" HorizontalAlignment="Left" Margin="244,25,0,0" VerticalAlignment="Top" Width="105"/>
+        <TextBlock Name="HeldItemsPokemon" HorizontalAlignment="Left" Margin="0,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="727" Height="97"/>
+        <Label Content="Habilidades" HorizontalAlignment="Left" Margin="0,254,0,0" VerticalAlignment="Top" RenderTransformOrigin="-6.423,-0.14" Width="82"/>
+        <DataGrid SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" SelectedItem="{Binding Path=HabilidadeSelecionada, Mode=TwoWay}" CanUserAddRows="False" ItemsSource="{Binding Habilidades , UpdateSourceTrigger=PropertyChanged}"  Margin="0,280,273,372"/>
+        <TextBlock TextWrapping="Wrap" Name="descricaoHabilidadeTextBlock" Margin="0,417,273,193" />
+    </Grid>
+</Window>
